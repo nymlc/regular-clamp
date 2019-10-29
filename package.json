@@ -7,6 +7,9 @@
     "start": "NODE_ENV=dev webpack --config webpack.config.js",
     "build": "NODE_ENV=prod webpack --config webpack.config.js"
   },
+  "files": [
+    "dist", "LICENSE", "package.json", "README.md"
+  ],
   "keywords": [
     "Regular",
     "Clamp"
