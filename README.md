@@ -1,5 +1,6 @@
 # <regular-clamp>
 JS实现多文本截断功能
+[https://nymlc.github.io/regular-clamp/demo/](Demo)
 
 #props
 + `autoresize（Boolean）`：根据内容区域变化来自适应，默认`false`
