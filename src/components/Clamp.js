@@ -1,9 +1,11 @@
-import { addListener, removeListener } from 'resize-detector'
-import Regular from 'regularjs'
+import {
+    addListener,
+    removeListener
+} from 'resize-detector'
 const UPDATE_TRIGGERS = ['maxLines', 'maxHeight', 'ellipsis', 'isClamped']
 const INIT_TRIGGERS = ['tag', 'text', 'autoresize']
 
-const Clamp = Regular.extend({
+const Clamp = {
     name: 'regular-clamp',
     data: {
         offset: null,
@@ -185,5 +187,10 @@ const Clamp = Regular.extend({
     template: `<div ref="clamp" style="max-height: {realMaxHeight}; overflow: hidden;">
                     <span ref="content" style="box-shadow: transparent 0 0;">{#if before}{#include before}{/if}<span ref="text" aria-label="{text.trim()}">{realText}</span>{#if after}{#include after}{/if}</span>
                 </div>`
-})
+}
+
+if (typeof window !== 'undefined' && window.Regular) {
+    window.Regular.extend(Clamp)
+}
+
 export default Clamp

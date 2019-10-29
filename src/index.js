@@ -1,5 +1,6 @@
 import Regular from 'regularjs'
-import './components/Clamp'
+import Clamp from './components/Clamp'
+Regular.extend(Clamp)
 const str = `Regular是什么
 Regular 本身在网易公司内部稳定运行了超过4年(本节撰写于2018年), 支持了数十条产品线，可靠性是值得保证的。
 Regular 是 MDV(数据驱动视图技术) 的一种实现， 它...

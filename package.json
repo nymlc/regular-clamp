@@ -1,8 +1,8 @@
 {
-  "name": "regular-clamp",
-  "version": "1.0.0",
+  "name": "regular-clamp1",
+  "version": "1.0.1",
   "description": "Text clamping",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "NODE_ENV=dev webpack --config webpack.config.js",
     "build": "NODE_ENV=prod webpack --config webpack.config.js"
@@ -11,6 +11,11 @@
     "Regular",
     "Clamp"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nymlc/regular-clamp"
+  },
+  "homepage": "https://nymlc.github.io/regular-clamp/demo/",
   "author": "",
   "license": "ISC",
   "devDependencies": {
