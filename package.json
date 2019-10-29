@@ -1,0 +1,23 @@
+{
+  "name": "regular-clamp",
+  "version": "1.0.0",
+  "description": "Text clamping",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=dev webpack --config webpack.config.js",
+    "build": "NODE_ENV=prod webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "Regular",
+    "Clamp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "regularjs": "^0.6.2",
+    "resize-detector": "^0.2.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
+}
