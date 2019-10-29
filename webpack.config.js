@@ -27,7 +27,8 @@ if (NODE_ENV === 'dev') {
         entry: './src/components/Clamp.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
-            filename: 'index.js'
+            filename: 'index.js',
+            libraryTarget: "umd"
         }
     }
 }

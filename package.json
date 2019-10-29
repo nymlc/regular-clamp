@@ -8,7 +8,10 @@
     "build": "NODE_ENV=prod webpack --config webpack.config.js"
   },
   "files": [
-    "dist", "LICENSE", "package.json", "README.md"
+    "dist",
+    "LICENSE",
+    "package.json",
+    "README.md"
   ],
   "keywords": [
     "Regular",
@@ -24,8 +27,10 @@
   "devDependencies": {
     "html-webpack-plugin": "^3.2.0",
     "regularjs": "^0.6.2",
-    "resize-detector": "^0.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "resize-detector": "^0.2.0"
   }
 }
