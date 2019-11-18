@@ -17,8 +17,8 @@ Regular 是 MDV(数据驱动视图技术) 的一种实现， 它...
 渐进的视图层框架：无侵入性，可以配合任何框架和模块系统使用`
 new Regular({
     template: `
-        <regular-clamp on-expanded={this.updateExpanded($event)} tag="section" max-lines=3 ellipsis="..." after={after} before={before}>
-            ${str}
+        <regular-clamp on-expanded={this.updateExpanded($event)} text={text} max-lines=3 ellipsis="..." after={after} before={before}>
+
         </regular-clamp>
     `,
     data: {
@@ -29,7 +29,8 @@ new Regular({
                 查看全部
             {/if}
         </span>`,
-        before: '<span class="start tag">开始</span>'
+        before: '<span class="start tag">开始</span>',
+        text: str
     },
     updateExpanded: function (event) {
         console.log(event)

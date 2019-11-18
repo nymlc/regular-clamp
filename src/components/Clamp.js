@@ -143,10 +143,13 @@ const Clamp = {
         return false
     },
     getText() {
-        let [content] = (this._body.ast || []).filter(
+        let [content = { }] = (this._body.ast || []).filter(
             node => node.type === 'text'
         )
-        return content ? content.text : ''
+        if(content.text && content.text.trim()) {
+            return content.text
+        }
+        return this.data.text || ''
     },
     moveEdge(steps) {
         this.clampAt(this.data.offset + steps)

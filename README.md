@@ -3,6 +3,7 @@ JS实现多文本截断功能
 [Demo](https://nymlc.github.io/regular-clamp/demo/)
 
 #props
++ `text（String）`：文本
 + `autoresize（Boolean）`：根据内容区域变化来自适应，默认`false`
 + `max-lines（Number）`：可显示的最大行数
 + `max-height（Number|String）`：内容区域最大高度
