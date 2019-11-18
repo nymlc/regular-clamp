@@ -34,7 +34,8 @@ new Regular({
     updateExpanded: function (event) {
         console.log(event)
     }
-}).$inject("#test")
+})
+.$inject("#test")
 new Regular({
     template: `
         <regular-clamp on-expanded={this.updateExpanded($event)} expanded autoresize max-lines=3 ellipsis="..." after={after} before={before}>
@@ -42,7 +43,7 @@ new Regular({
         </regular-clamp>
     `,
     data: {
-        after: `<span class="end tag" r-hide="!(localExpanded || isClamped)" on-click={this.toggle()}>
+        after: `<span class="end tag" r-hide="!((localExpanded && realLines >3) || isClamped)" on-click={this.toggle()}>
             {#if localExpanded}
                 收起
             {#else}

@@ -11,7 +11,8 @@ const Clamp = {
         offset: null,
         text: '',
         ellipsis: '...',
-        localExpanded: false
+        localExpanded: false,
+        realLines: 0
     },
     computed: {
         clampedText(data) {
@@ -69,7 +70,6 @@ const Clamp = {
         this.cleanUp()
     },
     mounted() {
-        window.ln = this
         this.initComp()
         INIT_TRIGGERS.forEach(prop => {
             this.$watch(prop, this.initComp)
@@ -77,6 +77,15 @@ const Clamp = {
 
         UPDATE_TRIGGERS.forEach(prop => {
             this.$watch(prop, this.update)
+        })
+        this.$watch(() => {
+            return this.$refs.content
+        }, (nVal) => {
+            this.data.realLines = nVal.getClientRects().length
+            this.$update()
+        }, {
+            deep: true,
+            init: true
         })
     },
     initComp() {
@@ -98,6 +107,8 @@ const Clamp = {
         this.update()
     },
     update() {
+        this.data.realLines = this.getLines()
+        this.$update()
         if (this.data.localExpanded) {
             return
         }
