@@ -9,6 +9,7 @@ JS实现多文本截断功能
 + `max-height（Number|String）`：内容区域最大高度
 + `ellipsis（String）`：截断末尾省略号字符，默认`...`
 + `expanded（Boolean）`：默认是否展开文本，默认`false`
++ `isTextTriggerToggle（Boolean）`：默认是否点击文本触发展开收起文本，默认`false`
 
 #结构复用
 + `before（String）`：`HTML`字符串，设置显示在内容区域之前的内容

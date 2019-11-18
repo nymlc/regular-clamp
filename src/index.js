@@ -39,7 +39,7 @@ new Regular({
 .$inject("#test")
 new Regular({
     template: `
-        <regular-clamp on-expanded={this.updateExpanded($event)} expanded autoresize max-lines=3 ellipsis="..." after={after} before={before}>
+        <regular-clamp on-expanded={this.updateExpanded($event)} isTextTriggerToggle expanded autoresize max-lines=3 ellipsis="..." after={after} before={before}>
             ${str}
         </regular-clamp>
     `,
