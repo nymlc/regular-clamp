@@ -1,6 +1,6 @@
 {
   "name": "regular-clamp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Text clamping",
   "main": "dist/index.js",
   "scripts": {
