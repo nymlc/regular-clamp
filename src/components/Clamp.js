@@ -78,14 +78,10 @@ const Clamp = {
         UPDATE_TRIGGERS.forEach(prop => {
             this.$watch(prop, this.update)
         })
-        this.$watch(() => {
-            return this.$refs.content
-        }, (nVal) => {
-            this.data.realLines = nVal.getClientRects().length
-            this.$update()
-        }, {
-            deep: true,
-            init: true
+        this.$watch('text', (nVal) => {
+            setTimeout(() => {
+                this.update()
+            }, 0)
         })
     },
     initComp() {
@@ -116,6 +112,8 @@ const Clamp = {
         if (this.isOverflow() || this.$get('isClamped')) {
             this.search()
         }
+        this.data.realLines = this.getLines()
+        this.$update()
     },
     toggle() {
         this.data.localExpanded = !this.data.localExpanded
