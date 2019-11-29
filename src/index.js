@@ -15,6 +15,7 @@ Regular 是 MDV(数据驱动视图技术) 的一种实现， 它...
 基于脏检查：直接操作裸数据，没有 set/get 包装
 良好的兼容性：支持 IE7+ 以及其他现代浏览器
 渐进的视图层框架：无侵入性，可以配合任何框架和模块系统使用`
+let str2 = `01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012`
 new Regular({
     template: `
         <regular-clamp on-expanded={this.updateExpanded($event)} text={text} max-lines=3 ellipsis="..." after={after} before={before}>
@@ -30,7 +31,7 @@ new Regular({
             {/if}
         </span>`,
         before: '<span class="start tag">开始</span>',
-        text: str.replace(/\s/g, '')
+        text: str2.replace(/\s/g, '')
     },
     updateExpanded: function (event) {
         console.log(event)
