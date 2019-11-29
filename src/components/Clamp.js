@@ -78,9 +78,9 @@ const Clamp = {
         UPDATE_TRIGGERS.forEach(prop => {
             this.$watch(prop, this.update)
         })
-        this.$watch('text', (nVal) => {
+        this.$watch('text', () => {
             setTimeout(() => {
-                this.update()
+                this.update(true)
             }, 0)
         })
     },
@@ -102,10 +102,15 @@ const Clamp = {
         }
         this.update()
     },
-    update() {
+    /**
+     *更新页面
+     *
+     * @param {*} init 为true的话说明是初始化，所以需要重新applyChange
+     */
+    update(init) {
         this.data.realLines = this.getLines()
         this.$update()
-        if (this.data.localExpanded) {
+        if (this.data.localExpanded && !init) {
             return
         }
         this.applyChange()
