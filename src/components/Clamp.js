@@ -197,7 +197,7 @@ const Clamp = {
         }
     },
     template: `<div ref="clamp" style="max-height: {realMaxHeight}; overflow: hidden;">
-                    <span ref="content" style="box-shadow: transparent 0 0;">{#if before}{#include before}{/if}<span ref="text" aria-label="{text.trim()}" style="white-space: pre;" {#if isTextTriggerToggle} on-click={this.toggle()} {/if}>{realText}</span>{#if after}{#include after}{/if}</span>
+                    <span ref="content" style="box-shadow: transparent 0 0;">{#if before}{#include before}{/if}<span ref="text" aria-label="{text.trim()}" style="white-space: pre-wrap;" {#if isTextTriggerToggle} on-click={this.toggle()} {/if}>{realText}</span>{#if after}{#include after}{/if}</span>
                 </div>`
 }
 

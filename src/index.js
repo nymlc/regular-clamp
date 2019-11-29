@@ -1,7 +1,7 @@
 import Regular from 'regularjs'
 import Clamp from './components/Clamp'
 Regular.extend(Clamp)
-const str = `Regular是什么
+let str = `Regular是什么
 Regular 本身在网易公司内部稳定运行了超过4年(本节撰写于2018年), 支持了数十条产品线，可靠性是值得保证的。
 Regular 是 MDV(数据驱动视图技术) 的一种实现， 它...
 提供以下能力
@@ -30,7 +30,7 @@ new Regular({
             {/if}
         </span>`,
         before: '<span class="start tag">开始</span>',
-        text: str
+        text: str.replace(/\s/g, '')
     },
     updateExpanded: function (event) {
         console.log(event)
