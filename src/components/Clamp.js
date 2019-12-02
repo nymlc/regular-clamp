@@ -67,6 +67,7 @@ const Clamp = {
         }, 0)
     },
     destroy() {
+        this.supr(); // call the super destroy 
         this.cleanUp()
     },
     mounted() {
