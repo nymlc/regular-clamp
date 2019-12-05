@@ -41,6 +41,7 @@ const Clamp = {
         }
     },
     config() {
+        this.data.afterElm = this.data.after
         this.data.text = this.getText()
         this.data.maxLines = +this.data.maxLines || 0
         this.data.localExpanded = !!this.data.expanded
@@ -77,13 +78,38 @@ const Clamp = {
         })
 
         UPDATE_TRIGGERS.forEach(prop => {
-            this.$watch(prop, this.update)
+            this.$watch(prop, () => {
+                this.update()
+            })
         })
-        this.$watch('text', () => {
-            setTimeout(() => {
-                this.update(true)
-            }, 0)
+        this.$watch('text', (nVal, oVal) => {
+            if(oVal != null) {
+                this.resetData(nVal)
+                setTimeout(() => {
+                    this.update(true)
+                }, 0)
+            } else {
+                setTimeout(() => {
+                    this.update()
+                }, 0)
+            }
+        }, {
+            init: true
         })
+    },
+    /**
+     *文本变化之后重置数据
+     *
+     * @param {*} text 新文本
+     */
+    resetData(text) {
+        // 赋值afterElm为空，防止其所占比重影响行数变化
+        this.data.afterElm = ''
+        this.data.offset = text.length
+        this.data.realLines = 0
+        this.data.localExpanded = false
+        this.data.text = text
+        this.$update()
     },
     initComp() {
         if (!this.data.text) {
@@ -109,6 +135,11 @@ const Clamp = {
      * @param {*} init 为true的话说明是初始化，所以需要重新applyChange
      */
     update(init) {
+        if(init) {
+            // 初始化的话重新赋值after以及localExpanded
+            this.data.afterElm = this.data.after
+            this.data.localExpanded = !!this.data.expanded
+        }
         this.data.realLines = this.getLines()
         this.$update()
         if (this.data.localExpanded && !init) {
@@ -203,7 +234,7 @@ const Clamp = {
         }
     },
     template: `<div ref="clamp" style="max-height: {realMaxHeight}; overflow: hidden;">
-                    <span ref="content" style="box-shadow: transparent 0 0;">{#if before}{#include before}{/if}<span ref="text" aria-label="{text.trim()}" style="white-space: pre-wrap;word-break: break-all;" {#if isTextTriggerToggle} on-click={this.toggle()} {/if}>{realText}</span>{#if after}{#include after}{/if}</span>
+                    <span ref="content" style="box-shadow: transparent 0 0;">{#if before}{#include before}{/if}<span ref="text" aria-label="{text.trim()}" style="white-space: pre-wrap;word-break: break-all;" {#if isTextTriggerToggle} on-click={this.toggle()} {/if}>{realText}</span>{#if afterElm}{#include afterElm}{/if}</span>
                 </div>`
 }
 
